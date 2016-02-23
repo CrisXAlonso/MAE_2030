@@ -10,8 +10,8 @@ systemMass = mass + (1/3)*springMass;   %in kg
 zeroPoint = 0.52; %zero point voltage
 
 %Inputs the ringdown data
-data1 = csvread('data', filesep, 'ringdown1.csv');
-data2 = csvread('data', filesep, 'ringdown2.csv');
+data1 = csvread('../Other/data/ringdown1.csv');
+data2 = csvread('../Other/data/ringdown2.csv');
 
 
 %Eliminates all points that have a time value of 0
@@ -227,7 +227,7 @@ freqVec = freqVec * 2 * pi;
 finalMass = deltaM/(freqVec(1)/freqVec(2)-1);
 fprintf('\nThe original mass of the loudspeaker is  %s kg\n\n', finalMass);
 %Calculating the damping coefficient for the loudspeaker
-bLS = finalMass*freqVec(1)/dataMax(1);
+bLS = finalMass*freqVec(1)/(dataMax(1)-4.5);
 fprintf('The damping coefficient of the loudspeaker is  %s N/m/s\n\n', bLS);
 %Calculating the spring constant for the loudspeaker
 kLS = (bLS^2/finalMass)*dataMax(1)^2;
